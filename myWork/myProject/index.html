@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark nav-fluid" style="width: 100%;">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="india.jpg" alt="logo" style="width:40px;height:40px">
+  </a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="about.html">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="news.html">News</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="contact.html">Contact</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="container">
+
+	<div class="row">
+		<div class=" col-12 col-sm-12 col-md-6 col-lg-4 col-xl-8">
+			<h2>Login form</h2>
+  <form name="myForm">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" placeholder="Enter email" name="email" id="lgemail" value="">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" placeholder="Enter password" name="pswd" id="lgpwd" value="">
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label>
+    </div>
+    <!-- <button type="submit" onsubmit="return validateform()" class="btn btn-primary">Submit</button> -->
+    <button onclick="loginfun()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+  <div class=" col-12 col-sm-12 col-md-6 col-lg-8 col-xl-4">
+  	<h2>Registration Form</h2>
+
+<div class="container1" >
+    <form action="/action_page.php">
+  
+
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="firstname"><b>FirstName</b></label>
+    <input type="text" placeholder="Enter FirstName" name="firstname" id="firstname" value="" required>
+
+    <label for="lastname"><b>LastName</b></label>
+    <input type="text" placeholder="Enter LastName" name="lastname" id="lastname" value="" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" value="" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="pwd" value="" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" equired>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  
+<script>
+  function validateform(){  
+var EmailV=document.myForm.email.value;  
+var password=document.myForm.pswd.value;  
+  
+if (name==null || name==""){  
+  alert("Name can't be blank");  
+  return false;  
+}else if(password.length<6){  
+  alert("Password must be at least 6 characters long.");  
+  return false;  
+  }  
+}  
+
+
+function myFunction(){
+
+  var firstName1 = document.getElementById("firstname");
+  localStorage.setItem('firstName1',firstName1.value);
+  var storedName = localStorage.getItem('firstName1');
+
+  var lastName1 = document.getElementById("lastname");
+  localStorage.setItem('lastName1',lastName1.value);
+  var storedName1 = localStorage.getItem('lastName1');
+
+if (storedName.value !== "undefined") {
+  document.getElementById("result1").innerHTML = localStorage.getItem("firstName1");
+} else {
+  document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
+if (storedName1.value !== "undefined") {
+  document.getElementById("result2").innerHTML = localStorage.getItem("lastName1");
+} else {
+  document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+}
+
+function loginfun(){
+//login form
+debugger;
+var LgEmail1 = document.getElementById("lgemail").value;
+console.log(LgEmail1);
+var LgPwd1 = document.getElementById("lgpwd").value;
+console.log(LgPwd1);
+var storedName2 = localStorage.getItem('Email1');
+var storedName3 = localStorage.getItem('Pwd1');
+
+if (LgEmail1 == storedName2 && LgPwd1 == storedName3) {
+  alert("Login Succefully");
+}
+else{
+  alert("Login Error");
+}
+
+}
+
+function myFunction1(){
+//registration form
+  var Email1 = document.getElementById("email");
+  localStorage.setItem('Email1',Email1.value);
+
+  var Pwd1 = document.getElementById("pwd");
+  localStorage.setItem('Pwd1',Pwd1.value);
+}
+</script>
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+
+
+  <button type="button" onclick="myFunction()">Click Me!</button>
+      <div id="result">
+        <span id="result1"></span><span id="result2"></span><br>
+        <span id="result3"></span>
+      </div>
+
+      <button type="button" onclick="myFunction1()">Register login</button>
+</form>
+</div>
+  </div>
+
+</div>
+
+
+<ul class="pager">
+    <button>
+    <li class="next"><a href="about.html">Next</a></li>
+    </button>
+  </ul>
+  
+
+<footer id="foot">
+  <p>Posted by: Pranita Ghotekar</p>
+  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+</footer>
+</body>
+</html>
+
+

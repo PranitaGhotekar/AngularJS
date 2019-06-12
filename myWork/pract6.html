@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>storage</title>
+</head>
+<body>
+	<div id="result"></div>
+	<div id="result1"></div>
+
+	<button onclick="clickCounter();">Click me!</button>
+
+	<p> count numbers: <output id="result2"></output></p>
+
+	<button onclick="startWorker();">Start Worker</button>
+	<button onclick="stopWorker();">Stop Worker</button>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("lastname", "Ghotekar");
+  // Retrieve
+  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
+function clickCounter() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result1").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+  } else {
+    document.getElementById("result1").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+
+
+var w;
+
+function startWorker() {
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(w) == "undefined") {
+      w = new Worker("demo_workers.js");
+    }
+    w.onmessage = function(event) {
+      document.getElementById("result2").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result2").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
+}
+
+
+</script>
+
+
+</body>
+</html>

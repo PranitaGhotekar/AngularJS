@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>video</title>
+</head>
+<body>
+	<div style="text-align: center">
+		<button onclick="playpause();">play/pause</button>
+		<button onclick="makeBig();">Big</button>
+		<button onclick="makeSmall();">Small</button>
+		<button onclick="makeNormal();">Normal</button>
+
+<video id="video1" width="320" height="240" controls>
+  <source src="kavyaVideo.mp4" type="video/mp4">
+  <source src="kavyaVideo.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+<script type="text/javascript">
+	var myVideo = document.getElementById("video1");
+	function playPause(){
+		if(myVideo.pause){
+			myVideo.play();
+		}
+		else{
+			myVideo.pause();
+		}
+	}
+	function makeBig(){
+		myVideo.width = 560;
+	}
+	function makeSmall(){
+		myVideo.width = 320;
+	}
+	function makeNormal(){
+		myVideo.width = 420;
+	}
+
+	function allowDrop(ev){
+      ev.preventDefault();
+	}
+	function drag(ev){
+      
+	}
+	function drop(ev){
+
+	}
+</script>
+<div></div>
+</body>
+</html>
